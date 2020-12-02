@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>001 - Vue JS</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+
+    <style>
+        .fundo{
+            width: 200px;
+            height: 200px;
+            background: rebeccapurple;
+        }
+        .rosa{
+            background: lightcoral;
+        }
+        .azul{
+            background: blue;
+        }
+        .vermelho{
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+   
+
+    <div id="app">
+        <!-- <p>{{ mensagem }}</p>
+        <p>Meu nome é: {{ nome }}</p>
+        
+        <input type="text" v-on:input="mudarNome">
+        <hr>
+        <h4>Propriedades</h4>
+        <p>v-bind: <a v-bind:href="docs">Vue Js</a> - (É usado para atributos)</p>
+        <p>v-text: <span v-text="instrutor"></span></p>
+        <hr>
+        <h4>Cliques no botão</h4>
+        <button v-on:click="incrementoBotao">Clique [desativado]</button>
+        <p>Foi clicado {{cliques}}x</p>
+        <hr> 
+        <h4>2 parametros com 'target'</h4>
+        <input v-on:blur="mostraNome('Meu nome é: ', $event)" type="text" placeholder="Nome">
+        <p>{{info_nome}}</p>
+        <hr>
+        <h4>Modificadores de evento - Console</h4>
+        <form>
+            <input type="text">
+            <button v-on:click="onSubmit" type="submit">Sem modificador</button>
+            <button v-on:click.prevent="onSubmit" type="submit">Com modificador</button>
+        </form>
+        <hr>
+        <h4>v-model</h4>
+        <input type="text" v-model="nome">
+        <p>{{nome}}</p>
+        -->
+        <!-- <hr>
+        <h4>Trocar style dinamicamente</h4>
+        <div 
+            class="fundo"
+            :class="{azul : trocar}"
+            @click="aplicarFundo"
+        ></div> -->
+        <hr>
+        <p>Classes: rosa, azul, vermelho</p>
+        <input v-model="corEscolhida" type="text" placeholder="Digite a classe"><br><br>
+        <div 
+            class="fundo"
+            :class="corEscolhida"
+        ></div>
+
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                mensagem: 'Olá, Vue JS',
+                nome: '',
+                docs: 'https://vuejs.org',
+                instrutor: 'Marcio',
+                cliques: 0,
+                info_nome: '',
+                trocar: false,
+                corEscolhida: ''
+            },
+            methods: {
+                // mudarNome: function(event){
+                //     this.nome = event.target.value;
+                // },
+                // incrementoBotao = function(){
+                //     this.cliques++;
+                // },
+                // mostraNome: function(inicio, event){
+                //     this.info_nome = inicio + event.target.value;
+                // }
+                // onSubmit: function(){
+                //     console.log('Formulario enviado');
+                // }
+                // alterarNome: function(event){
+                //     this.nome = event.target.value;
+                // }
+                // aplicarFundo: function(){
+                //     this.trocar = !this.trocar;
+                // }
+            }
+        });
+    </script>
+</body>
+</html>
