@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>Produtos - Array</h1>
+        <ul>
+            <p>For com 'in'</p>
+            <li v-for="(prod, indice) in produtos">{{texto}}{{indice+1}} {{prod}}</li>
+        </ul>
+        <hr>
+        <ul>
+            <p>For com 'of'</p>
+            <li v-for="prod in produtos">
+                {{prod}}
+            </li>
+        </ul>
+
+        <br><br>
+
+        <h1>Produtos - Objeto</h1>
+        <ul>
+            <li v-for="(material, chave, indice) in materiais">{{indice }}. {{chave}}: {{material}}</li>
+        </ul>
+        <hr>
+
+        <h1>Numericos</h1>
+        <ul>
+            <li v-for="(valor, i) in 10">Indice: {{i}} e valor: {{valor}}</li>
+        </ul>
+        <hr>
+
+        <h1>Rastreamento de identidade</h1>
+        <ul>
+            <li v-for="item in rastreador">{{item.id}} - {{item.nome}}</li>
+        </ul>
+        <p><b>Melhor usar o Att key, para poder ter controle de todos os elementos da lista</b></p>
+        <ul>
+            <li v-for="item in rastreador" :key="item.id">{{item.id}} - {{item.nome}}</li>
+        </ul>
+        <button @click="rastreador.reverse()">Inverter Lista</button>
+        <button @click="addProduto">Add na Lista</button>
+        <hr>
+    </div>
+
+    <script type="text/javascript">
+
+        new Vue({
+            el: "#app",
+            data: {
+                texto: 'Produto',
+                produtos: [
+                    'Monitor',
+                    'Mouse',
+                    'Teclado'
+                ],
+                materiais: {
+                    id: 1,
+                    nome: 'Computador',
+                    preco: '299,99'
+                },
+                rastreador: [
+                    { id: 1, nome: 'Computador' },
+                    { id: 2, nome: 'Teclado' },
+                    { id: 3, nome: 'Monitor' },
+                    { id: 4, nome: 'Sistemas' }
+                ]
+            },
+            methods: {
+                addProduto: function () {
+                    var id = this.rastreador.length + 1;
+                    this.rastreador.push({ id: id, nome: `Produto ${id}` });
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

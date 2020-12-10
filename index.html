@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <style>
+        .caixa {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        .azul {
+            background: blue;
+        }
+
+        .rosa {
+            background: pink;
+        }
+
+        .roxo {
+            background: purple;
+        }
+
+        .circulo {
+            border-radius: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <h2>Trocar cor por CLASSE</h2>
+        <p>Cores: azul, rosa, roxo, circulo</p>
+        <input type="text" v-model="nomeClasse">
+        <div class="caixa" :class="nomeClasse"></div><br>
+        <hr>
+
+        <h2>Clique</h2>
+        <div class="caixa" :class="classesCSS" @click="trocar = !trocar"></div><br>
+        <hr>
+
+        <h2>Trocar cor pelo STYLE</h2>
+        <div class="caixa" :style="{backgroundColor: styleCss, height: tamanho + 'px', width: tamanho + 'px'}">INLINE
+        </div>
+        <br><br>
+        <div class="caixa" :style="estiloCSS">CLASSE</div>
+        <input type="text" v-model="styleCss">
+        <input v-model.number="tamanho" type="number" placeholder="Tamanho em pixel">
+
+    </div>
+
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                trocar: false,
+                nomeClasse: '',
+                styleCss: '',
+                tamanho: 200
+            },
+            computed: {
+                classesCSS: function () {
+                    return {
+                        azul: this.trocar,
+                        circulo: this.trocar,
+                        roxo: !this.trocar
+                    }
+                },
+                estiloCSS: function () {
+                    return {
+                        backgroundColor: this.styleCss,
+                        height: (this.tamanho + 10) + 'px',
+                        width: '100px'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

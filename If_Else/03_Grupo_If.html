@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo If</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>Diferença apenas na arvore do DOM</p>
+        <hr>
+
+        <h3>Modo 1</h3>
+        <p>Aqui a li é quebrada com a DIV </p>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <div if="mostrar">
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </div>
+
+        <h3>Modo 2</h3>
+        <p>Aqui a li não é quebrada com a DIV </p>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <template if="mostrar">
+            <li>Item 3</li>
+            <li>Item 4</li>
+        </template>
+
+    </div>
+
+    <script type="text/javascript">
+
+        new Vue({
+            el: "#app",
+            data: {
+                mostrar: true
+            }
+        });
+
+    </script>
+</body>
+
+</html>

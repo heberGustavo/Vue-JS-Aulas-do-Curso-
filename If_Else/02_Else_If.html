@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Else e If</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <p v-if="nota === 'A'">Parabens! Você tirou um A</p>
+        <p v-else-if="nota === 'B'">Você tirou um B</p>
+        <p v-else-if="nota === 'C'">Precisa melhora, você tirou um C</p>
+        <p v-else>Sua nota não foi publicada</p>
+        <input v-model="nota" type="text" placeholder="Informe a nota(A, B ou C)">
+    </div>
+
+    <script type="text/javascript">
+
+        new Vue({
+            el: "#app",
+            data: {
+                nota: ''
+            }
+        });
+
+    </script>
+</body>
+
+</html>
