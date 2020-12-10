@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-show</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <h3>Modo 1</h3>
+        <ul>
+            <li v-for="item in rastreador" :key="item.id" v-if="!item.finalizada">{{item.nome}}</li>
+        </ul>
+
+        <h3>Modo 2</h3>
+        <ul v-if="tarefasIncompletas.length">
+            <li v-for="item in tarefasIncompletas" :key="item.id">{{item.nome}}</li>
+        </ul>
+        <p v-else>Nenhuma tarefa a ser feita</p>
+    </div>
+
+    <script type="text/javascript">
+
+        new Vue({
+            el: "#app",
+            data: {
+                rastreador: [
+                    { id: 1, nome: 'Computador', finalizada: true },
+                    { id: 2, nome: 'Teclado', finalizada: true },
+                    { id: 3, nome: 'Monitor', finalizada: true },
+                    { id: 4, nome: 'Sistemas', finalizada: true }
+                ]
+            },
+            /*
+                Tem que usar porque se fazer do primeiro modo o item que tiver TRUE vai ser só comentado
+                Ou seja, a lista continuara passando por esse item
+
+                Usando COMPUTED isso não acontece, ela só traz os elementos que estiver com FALSE
+            */
+            computed: {
+                tarefasIncompletas: function () {
+                    return this.rastreador.filter(function (rastrear) {
+                        return !rastrear.finalizada;
+                    })
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>
