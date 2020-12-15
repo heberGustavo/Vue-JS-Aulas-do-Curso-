@@ -17,8 +17,9 @@
             <li v-for="item in meuArray" :key="item.id">{{item.nome}}</li>
         </ul>
         <button @click="adicionarProduto">Adicionar produto</button>
-        <button @click="produto = produto.slice(0, 4)">Resetar array</button>
+        <button @click="meuArray = meuArray.slice(0, 4)">Resetar array</button>
         <button @click="substituirProduto">Substituir produto</button>
+        <button @click="cortarArray">Cortar Array</button>
     </div>
 
     <script type="text/javascript">
@@ -40,7 +41,19 @@
                     this.meuArray.push({ id: id, nome: 'Produto ' + id });
                 },
                 substituirProduto: function(event) {
-                    
+                    var tamanho = this.meuArray.length;
+                    var indice = 2;
+                    var id = tamanho + 1;
+                    var novoProduto = { id: id, nome: 'Produto ' + id };
+
+                    //Para substituir produto usa desse modo - Reativo
+                    // 3 modos para fazer isso
+                    // Vue.set(this.meuArray, indice, novoProduto);
+                    // this.$set(this.meuArray, indice, novoProduto);
+                    this.meuArray.splice(indice, 1, novoProduto);
+                },
+                cortarArray: function(event){
+                    this.meuArray.splice(2);
                 }
             }
         });
